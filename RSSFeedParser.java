@@ -10,7 +10,11 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.events.Characters;
 import javax.xml.stream.events.XMLEvent;
 
-
+/**
+ * Represents a parser that reads in and processes the contents of a RSS feed
+ * @author Shiqing
+ *
+ */
 public class RSSFeedParser {
     static final String TITLE = "title";
     static final String DESCRIPTION = "description";
@@ -24,7 +28,11 @@ public class RSSFeedParser {
     static final String GUID = "guid";
 
     final URL url;
-
+    
+    /**
+     * creates a new RSSFeedParser with the given feed's URL
+     * @param feedUrl
+     */
     public RSSFeedParser(String feedUrl) {
         try {
             this.url = new URL(feedUrl);
@@ -33,11 +41,15 @@ public class RSSFeedParser {
         }
     }
 
+    /**
+     * read in a RSS feed and store all feed messages into a Feed object
+     * @return a Feed object that contains all feed messages 
+     */
     public Feed readFeed() {
         Feed feed = null;
         try {
             boolean isFeedHeader = true;
-            // Set header values intial to the empty string
+            // Set header values initial to the empty string
             String description = "";
             String title = "";
             String link = "";
@@ -112,6 +124,13 @@ public class RSSFeedParser {
         return feed;
     }
 
+    /**
+     * parse data from a XMLEvent
+     * @param event
+     * @param eventReader
+     * @return a string that contains text related to a XMLEvent
+     * @throws XMLStreamException
+     */
     private String getCharacterData(XMLEvent event, XMLEventReader eventReader)
             throws XMLStreamException {
         String result = "";
@@ -122,6 +141,10 @@ public class RSSFeedParser {
         return result;
     }
 
+    /**
+     * read the contents of the URL
+     * @return a input stream on the specified URL
+     */
     private InputStream read() {
         try {
             return url.openStream();
