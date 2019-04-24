@@ -22,7 +22,7 @@ class MaxHeap {
 	 * Return current size of the heap
 	 * @return the size of the heap.
 	 */
-	int heapsize() {
+	int heapSize() {
 		return n;
 	}
 
@@ -40,7 +40,7 @@ class MaxHeap {
 	 * @param pos the current position
 	 * @return position for left child of pos
 	 */
-	int leftchild(int pos) {
+	int leftChild(int pos) {
 		if (pos >= n / 2)
 			return -1;
 		return 2 * pos + 1;
@@ -51,7 +51,7 @@ class MaxHeap {
 	 * @param pos the current position
 	 * @return position for right child of pos
 	 */
-	int rightchild(int pos) {
+	int rightChild(int pos) {
 		if (pos >= (n - 1) / 2)
 			return -1;
 		return 2 * pos + 2;
@@ -99,20 +99,20 @@ class MaxHeap {
 	/**
 	 * Heapify contents of Heap
 	 */
-	void buildheap() {
+	void buildHeap() {
 		for (int i = n / 2 - 1; i >= 0; i--)
-			siftdown(i);
+			siftDown(i);
 	}
 
 	/**
 	 * Put element in its correct place 
 	 * @param pos the current position
 	 */
-	void siftdown(int pos) {
+	void siftDown(int pos) {
 		if ((pos < 0) || (pos >= n))
 			return; // Illegal position
 		while (!isLeaf(pos)) {
-			int j = leftchild(pos);
+			int j = leftChild(pos);
 			if ((j < (n - 1)) && (Heap[j].compareTo(Heap[j + 1]) < 0))
 				j++; // j is now index of child with greater value
 			if (Heap[pos].compareTo(Heap[j]) >= 0)
@@ -126,12 +126,12 @@ class MaxHeap {
 	 * Remove and return maximum value
 	 * @return maximum value
 	 */
-	Comparable removemax() {
+	Comparable removeMax() {
 		if (n == 0)
 			return -1; // Removing from empty heap
 		swap(Heap, 0, --n); // Swap maximum with last value
 		if (n != 0) // Not on last element
-			siftdown(0); // Put new heap root val in correct place
+			siftDown(0); // Put new heap root val in correct place
 		return Heap[n];
 	}
 
@@ -141,9 +141,9 @@ class MaxHeap {
 	 * @return element at the current position
 	 */
 	Comparable remove(int pos) {
-		Comparable  res = Heap[pos];
 		if ((pos < 0) || (pos >= n))
 			return -1; // Illegal heap position
+		Comparable  res = Heap[pos];
 		if (pos == (n - 1))
 			n--; // Last element, no work to be done
 		else {
@@ -175,6 +175,6 @@ class MaxHeap {
 	      swap(Heap, pos, parent(pos));
 	      pos = parent(pos);
 	    }
-	    if (n != 0) siftdown(pos); // If it is little, push down
+	    if (n != 0) siftDown(pos); // If it is little, push down
 	  }
 	}
