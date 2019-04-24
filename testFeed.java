@@ -3,8 +3,6 @@ import org.junit.*;
 import java.io.*;
 import java.util.*;
 
-import javax.accessibility.AccessibleAttributeSequence;
-
 public class testFeed {
     @Test
     public void testGetMessage() {
