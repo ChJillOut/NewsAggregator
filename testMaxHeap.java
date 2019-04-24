@@ -5,7 +5,7 @@ import java.util.*;
 
 public class testMaxHeap {
     @Test
-    public testHeapSize() {
+    public void testHeapSize() {
         Comparable[] h = new Comparable[10];
         int n = 3;
         int size = 10;
@@ -17,7 +17,7 @@ public class testMaxHeap {
     }
 
     @Test
-    public testIsLeaf() {
+    public void testIsLeaf() {
         Comparable[] h = new Comparable[10];
         int n = 3;
         int size = 10;
@@ -29,7 +29,7 @@ public class testMaxHeap {
     }
 
     @Test
-    public testLeftChild() {
+    public void testLeftChild() {
         Comparable[] h = new Comparable[10];
         int n = 3;
         int size = 10;
@@ -41,7 +41,7 @@ public class testMaxHeap {
     }
 
     @Test
-    public testRightChild() {
+    public void testRightChild() {
         Comparable[] h = new Comparable[10];
         int n = 3;
         int size = 10;
@@ -53,7 +53,7 @@ public class testMaxHeap {
     }
 
     @Test
-    public testParent() {
+    public void testParent() {
         Comparable[] h = new Comparable[10];
         int n = 3;
         int size = 10;
@@ -65,7 +65,7 @@ public class testMaxHeap {
     }
 
     @Test
-    public testInsert() {
+    public void testInsert() {
         Comparable[] h = new Comparable[10];
         int n = 3;
         int size = 5;
@@ -79,7 +79,7 @@ public class testMaxHeap {
     }
 
     @Test
-    public testSwap() {
+    public void testSwap() {
         Comparable[] h = new Comparable[10];
         int n = 3;
         int size = 5;
@@ -91,7 +91,7 @@ public class testMaxHeap {
     }
 
     @Test
-    public testSiftDown() {
+    public void testSiftDown() {
         Comparable[] h = new Comparable[10];
         int n = 3;
         int size = 5;
@@ -104,7 +104,7 @@ public class testMaxHeap {
     }
 
     @Test
-    public testRemoveMax() {
+    public void testRemoveMax() {
         Comparable[] h = new Comparable[10];
         int n = 0;
         int size = 5;
@@ -117,7 +117,7 @@ public class testMaxHeap {
     }
 
     @Test
-    public testRemove() {
+    public void testRemove() {
         Comparable[] h = new Comparable[10];
         int n = 3;
         int size = 5;
@@ -131,7 +131,7 @@ public class testMaxHeap {
     }
 
     @Test
-    public testModifyandUpdate() {
+    public void testModifyandUpdate() {
         Comparable[] h = new Comparable[10];
         int n = 3;
         int size = 5;
