@@ -15,6 +15,7 @@ public class FeedMessage {
 	String link;
 	String author;
 	String guid;
+	String newsText;
 	TfidfFilter calculator = new TfidfFilter();
 	HashMap<String, Double> map;
 
@@ -140,6 +141,22 @@ public class FeedMessage {
 	 */
 	public void setGuid(String guid) {
 		this.guid = guid;
+	}
+	
+    /**
+     * get the news content of this FeedMessage
+     * @return this FeedMessage's news content
+     */
+    public String getNewsText() {
+		return newsText;
+	}
+
+    /**
+     * change the news content of this FeedMessage
+     * @param newsText this FeedMessage's news content
+     */
+	public void setNewsText(String newsText) {
+		this.newsText = newsText;
 	}
 
 	/**
