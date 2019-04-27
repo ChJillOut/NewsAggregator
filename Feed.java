@@ -1,5 +1,6 @@
  
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 /**
  * Represents a single RSS feed 
@@ -100,5 +101,10 @@ public class Feed {
                 + ", language=" + language + ", link=" + link + ", pubDate="
                 + pubDate + ", title=" + title + "]";
     }
+
+	public HashMap<String, MaxHeap> getEntries() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+
+import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
 
 // Max-heap implementation
 class MaxHeap {
@@ -17,9 +20,19 @@ class MaxHeap {
 		n = num;
 		size = max;
 		keyWord = k;
-		buildheap();
+		buildHeap();
 	}
-
+	/**
+	 * Convert the heap to an ArrayList 
+	 * @return the converted list
+	 */
+	public ArrayList<FeedMessage> toList(){
+		ArrayList<FeedMessage> res = new ArrayList<>();
+		for(int i =0; i < n; i++){
+			res.add(Heap[i]);
+		}
+		return res;
+	}
 	/**
 	 * Return current size of the heap
 	 * @return the size of the heap.
@@ -74,7 +87,7 @@ class MaxHeap {
 	 * Insert key into heap
 	 * @param key the key to insert
 	 */
-	void insert(int key) {
+	void insert(FeedMessage key) {
 		if (n >= size) {
 			System.out.println("Heap is full");
 			return;
@@ -117,7 +130,7 @@ class MaxHeap {
 			int j = leftChild(pos);
 			if ((j < (n - 1)) && (Heap[j].compareTo(Heap[j + 1], keyWord) < 0))
 				j++; // j is now index of child with greater value
-			if (Heap[pos].compareTo(Heap[j]) >= 0)
+			if (Heap[pos].compareTo(Heap[j], keyWord) >= 0)
 				return;
 			swap(Heap, pos, j);
 			pos = j; // Move down
@@ -130,7 +143,7 @@ class MaxHeap {
 	 */
 	FeedMessage removeMax() {
 		if (n == 0)
-			return -1; // Removing from empty heap
+			return null; // Removing from empty heap
 		swap(Heap, 0, --n); // Swap maximum with last value
 		if (n != 0) // Not on last element
 			siftDown(0); // Put new heap root val in correct place
@@ -144,7 +157,7 @@ class MaxHeap {
 	 */
 	FeedMessage remove(int pos) {
 		if ((pos < 0) || (pos >= n))
-			return -1; // Illegal heap position
+			return null; // Illegal heap position
 		FeedMessage  res = Heap[pos];
 		if (pos == (n - 1))
 			n--; // Last element, no work to be done

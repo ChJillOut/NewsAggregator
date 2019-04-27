@@ -11,7 +11,7 @@ public class TfidfFilter implements ITfidfFilter {
 	}
 
 	@Override
-	public HashMap<String, Integer> calculateTfidf(IDataBase db, FeedMessage msg) {
+	public HashMap<String, Double> calculateTfidf(DataBase db, FeedMessage msg) {
 		// TODO Auto-generated method stub
 		initStopList();
 		PriorityQueue<info> pq = new pq<>((a, b) -> b.score - a.score);
