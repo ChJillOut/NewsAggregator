@@ -8,6 +8,7 @@ import java.util.Set;
 import com.sun.java_cup.internal.runtime.Scanner;
 
 public class DataBase implements IDataBase {
+	Set<String> stoppedList  = new HashSet<>();
 	final int MAX_HEAP_NUM = 100;
 	HashMap<String, MaxHeap> db;
 	int dbSize = 0;
@@ -16,6 +17,18 @@ public class DataBase implements IDataBase {
 	public DataBase() {
 		db = new HashMap<>();
 		allTermMap = new HashMap<>();
+	}	
+	
+	public void initStopList() {
+		File input = new File("../stoppedlist");
+		Scanner sc = new Scanner(input);
+		try {
+			while (sc.hasNextLine());
+			String s = sc.nextLine().trim();
+			stoppedList.add(s);
+		} catch (FileNotFoundException e) {
+			throw new FileNotFoundException();
+		}
 	}
 
 	@Override
