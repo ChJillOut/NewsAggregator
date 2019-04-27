@@ -8,5 +8,5 @@ public interface ITfidfFilter {
 	 * @param msg
 	 * @return a hash map recording the 10 words with highest TF-IDF value and the corresponding TF-IDF value. 
 	 */
-	public HashMap<String, Integer> calculateTfidf(IDataBase db, FeedMessage msg) ;
+	public HashMap<String, Double> calculateTfidf(IDataBase db, FeedMessage msg) ;
 }

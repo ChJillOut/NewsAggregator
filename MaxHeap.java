@@ -1,9 +1,10 @@
 
 // Max-heap implementation
 class MaxHeap {
-	private Comparable[] Heap; // Pointer to the heap array
+	private FeedMessage[] Heap; // Pointer to the heap array
 	private int size; // Maximum size of the heap
 	private int n; // Number of things now in heap
+	String keyWord;
 
 	/**
 	 * Constructor supporting preloading of heap contents
@@ -11,10 +12,11 @@ class MaxHeap {
 	 * @param num number of elements.
 	 * @param max maximum number of elements to hold.
 	 */
-	MaxHeap(Comparable[] h, int num, int max) {
+	MaxHeap(FeedMessage[] h, int num, int max, String k) {
 		Heap = h;
 		n = num;
 		size = max;
+		keyWord = k;
 		buildheap();
 	}
 
@@ -80,7 +82,7 @@ class MaxHeap {
 		int curr = n++;
 		Heap[curr] = key; // Start at end of heap
 		// Now sift up until curr's parent's key > curr's key
-		while ((curr != 0) && (Heap[curr].compareTo(Heap[parent(curr)]) > 0)) {
+		while ((curr != 0) && (Heap[curr].compareTo(Heap[parent(curr)], keyWord) > 0)) {
 			swap(Heap, curr, parent(curr));
 			curr = parent(curr);
 		}
@@ -91,8 +93,8 @@ class MaxHeap {
 	 * @param cur the current index
 	 * @param par the parent's index
 	 */
-	public void swap(Comparable[] h, int cur, int par) {
-		Comparable tmp = h[cur];
+	public void swap(FeedMessage[] h, int cur, int par) {
+		FeedMessage tmp = h[cur];
 		h[cur] = h[par];
 		h[par] = tmp;
 	}
@@ -113,7 +115,7 @@ class MaxHeap {
 			return; // Illegal position
 		while (!isLeaf(pos)) {
 			int j = leftChild(pos);
-			if ((j < (n - 1)) && (Heap[j].compareTo(Heap[j + 1]) < 0))
+			if ((j < (n - 1)) && (Heap[j].compareTo(Heap[j + 1], keyWord) < 0))
 				j++; // j is now index of child with greater value
 			if (Heap[pos].compareTo(Heap[j]) >= 0)
 				return;
@@ -126,7 +128,7 @@ class MaxHeap {
 	 * Remove and return maximum value
 	 * @return maximum value
 	 */
-	Comparable removeMax() {
+	FeedMessage removeMax() {
 		if (n == 0)
 			return -1; // Removing from empty heap
 		swap(Heap, 0, --n); // Swap maximum with last value
@@ -140,10 +142,10 @@ class MaxHeap {
 	 * @param pos the current position
 	 * @return element at the current position
 	 */
-	Comparable remove(int pos) {
+	FeedMessage remove(int pos) {
 		if ((pos < 0) || (pos >= n))
 			return -1; // Illegal heap position
-		Comparable  res = Heap[pos];
+		FeedMessage  res = Heap[pos];
 		if (pos == (n - 1))
 			n--; // Last element, no work to be done
 		else {
@@ -158,7 +160,7 @@ class MaxHeap {
 	 * @param pos the current position
 	 * @param newVal the value to change into
 	 */
-	void modify(int pos, Comparable newVal) {
+	void modify(int pos, FeedMessage newVal) {
 	    if ((pos < 0) || (pos >= n)) return; // Illegal heap position
 	    Heap[pos] = newVal;
 	    update(pos);
@@ -171,7 +173,7 @@ class MaxHeap {
 	 */
 	void update(int pos) {
 	    // If it is a big value, push it up
-	    while ((pos > 0) && (Heap[pos].compareTo(Heap[parent(pos)]) > 0)) {
+	    while ((pos > 0) && (Heap[pos].compareTo(Heap[parent(pos)], keyWord) > 0)) {
 	      swap(Heap, pos, parent(pos));
 	      pos = parent(pos);
 	    }

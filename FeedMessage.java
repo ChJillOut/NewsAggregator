@@ -12,7 +12,10 @@ public class FeedMessage {
     String link;
     String author;
     String guid;
-
+    public int compareTo(FeedMessage fm, String keyWord){
+        
+        return 0;
+    }
     /**
      * get the title of this FeedMessage
      * @return this FeedMessage's title
