@@ -5,6 +5,8 @@ import java.util.List;
 public class DataBase implements IDataBase{
 	final int MAX_HEAP_NUM = 100;
 	HashMap<String, MaxHeap> db;
+	int dbSize = 0;
+	
 	public DataBase() {
 		db = new HashMap<>();
 	}
@@ -46,7 +48,7 @@ public class DataBase implements IDataBase{
 			}
 			
 		}
-		
+		dbSize += feed.getMessages().size();
 		return feed.getMessages().size();
 	}
 
