@@ -3,9 +3,9 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Scanner;
 import java.util.Set;
-
-import com.sun.java_cup.internal.runtime.Scanner;
+import java.io.*;
 
 public class DataBase implements IDataBase {
 	Set<String> stoppedList  = new HashSet<>();
@@ -19,16 +19,12 @@ public class DataBase implements IDataBase {
 		allTermMap = new HashMap<>();
 	}	
 	
-	public void initStopList() {
+	public void initStopList() throws FileNotFoundException {
 		File input = new File("../stoppedlist");
 		Scanner sc = new Scanner(input);
-		try {
-			while (sc.hasNextLine());
-			String s = sc.nextLine().trim();
-			stoppedList.add(s);
-		} catch (FileNotFoundException e) {
-			throw new FileNotFoundException();
-		}
+		while (sc.hasNextLine());
+		String s = sc.nextLine().trim();
+		stoppedList.add(s);
 	}
 
 	@Override
@@ -58,6 +54,9 @@ public class DataBase implements IDataBase {
 			HashMap<String, Double> map = msg.getMap();
 			for (String s : map.keySet()) {
 				MaxHeap heap = null;
+				if (stoppedList.contains(s)) {
+					continue;
+				}
 				if (db.keySet().contains(s)) {
 					heap = db.get(s);
 
@@ -73,7 +72,9 @@ public class DataBase implements IDataBase {
 			String[] arr = text.split(" ");
 			Set<String> set = new HashSet<>(Arrays.asList(arr));
 			for (String s : set) {
-				allTermMap.put(s, allTermMap.getOrDefault(s, 0) +1);
+				if (!stoppedList.contains(s)) {
+					allTermMap.put(s, allTermMap.getOrDefault(s, 0) +1);
+				}
 			}
 		}
 		dbSize += feed.getMessages().size();
