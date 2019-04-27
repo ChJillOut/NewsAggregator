@@ -1,3 +1,4 @@
+import java.awt.TextField;
 
 /**
  * Represents a single messages in a RSS feed
@@ -6,12 +7,24 @@
  *
  */
 public class FeedMessage {
-	
+	stupid github
 	String title;
     String description;
     String link;
     String author;
     String guid;
+    TfidfFilter calculator = new TfidfFilter();
+    HashMap<String, Double> map;
+    public FeedMessge(String t, String d, String l, String a,String g){
+        title = t;
+        description = d;
+        link = l;
+        author = a;
+        guid = g;
+        map = calculator.calculateTfidf();
+
+    }
+    HashMap<String, Double> keyWordMap = calculator.calculateTfidf; 
     public int compareTo(FeedMessage fm, String keyWord){
         
         return 0;
