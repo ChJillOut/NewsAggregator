@@ -7,7 +7,6 @@ import java.awt.TextField;
  *
  */
 public class FeedMessage {
-	stupid github
 	String title;
     String description;
     String link;
