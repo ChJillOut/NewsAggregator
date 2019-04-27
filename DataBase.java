@@ -73,12 +73,7 @@ public class DataBase implements IDataBase {
 			String[] arr = text.split(" ");
 			Set<String> set = new HashSet<>(Arrays.asList(arr));
 			for (String s : set) {
-				int count = 0;
-				if (allTermMap.containsKey(s)) {
-					count = allTermMap.get(s);
-				}
-				count++;
-				allTermMap.put(s, count);
+				allTermMap.put(s, allTermMap.getOrDefault(s, 0) +1);
 			}
 		}
 		dbSize += feed.getMessages().size();
