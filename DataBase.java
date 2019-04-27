@@ -5,6 +5,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
+
+import com.sun.javafx.collections.MappingChange.Map;
+
 import java.io.*;
 
 public class DataBase implements IDataBase {
@@ -12,11 +15,32 @@ public class DataBase implements IDataBase {
 	final int MAX_HEAP_NUM = 100;
 	HashMap<String, MaxHeap> db;
 	int dbSize = 0;
-	HashMap<String, Integer> allTermMap;
+	public Set<String> getStoppedList() {
+		return stoppedList;
+	}
 
+	public HashMap<String, MaxHeap> getDb() {
+		return db;
+	}
+
+	public int getDbSize() {
+		return dbSize;
+	}
+
+	public HashMap<String, Integer> getAllTermMap() {
+		return allTermMap;
+	}
+
+	public HashMap<FeedMessage, HashMap<String, Integer>> getFeedMessageMap() {
+		return feedMessageMap;
+	}
+
+	HashMap<String, Integer> allTermMap;
+	HashMap<FeedMessage, HashMap<String, Integer>> feedMessageMap;
 	public DataBase() {
 		db = new HashMap<>();
 		allTermMap = new HashMap<>();
+		feedMessageMap = new HashMap<>();
 	}	
 	
 	public void initStopList() throws FileNotFoundException {
@@ -69,10 +93,18 @@ public class DataBase implements IDataBase {
 
 			}
 			String text = msg.getNewsText();
-			String[] arr = text.split(" ");
-			Set<String> set = new HashSet<>(Arrays.asList(arr));
-			for (String s : set) {
+			String[] arr = text.split("[^a-zA-Z]+");
+			for (String s : arr) {
+				s = s.trim();
 				if (!stoppedList.contains(s)) {
+					HashMap<String, Integer> tempMap = null;
+					if (feedMessageMap.containsKey(msg)) {
+						tempMap = feedMessageMap.get(msg);
+					} else {
+						tempMap = new HashMap<>();
+					}
+					tempMap.put(s, tempMap.getOrDefault(s, 0)+1);
+					feedMessageMap.put(msg, tempMap);
 					allTermMap.put(s, allTermMap.getOrDefault(s, 0) +1);
 				}
 			}
