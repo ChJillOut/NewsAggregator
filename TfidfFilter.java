@@ -13,10 +13,8 @@ public class TfidfFilter implements ITfidfFilter {
 	@Override
 	public HashMap<String, Double> calculateTfidf(DataBase db, FeedMessage msg) {
 		// TODO Auto-generated method stub
-		initStopList();
 		PriorityQueue<info> pq = new pq<>((a, b) -> b.score - a.score);
-		wordTfidf(pq, )
-		Set<String> words = new HashSet<>(Arrays.asList(arr));
+		Map<String, Integer> wordCountMap = db.getFeed
 		return null;
 	}
 
