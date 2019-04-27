@@ -9,7 +9,10 @@ import java.util.HashMap;
  *
  */
 public class FeedMessage {
+<<<<<<< HEAD
+=======
 
+>>>>>>> af73d13dccf3e151425c7ffb7fc2a5b52cfc041c
 	String title;
 	String description;
 	String link;
