@@ -1,0 +1,16 @@
+/DataBase.class
+/Feed.class
+/FeedMessage.class
+/IDataBase.class
+/ITfidfFilter.class
+/IUser.class
+/MaxHeap.class
+/RSSFeedParser.class
+/ReadTest.class
+/TfidfFilter.class
+/User.class
+/testDataBase.class
+/testFeed.class
+/testFeedMessage.class
+/testMaxHeap.class
+/testUser.class

@@ -1,101 +1,148 @@
+import java.awt.TextField;
+import java.util.HashMap;
 
 /**
- * Represents a single messages in a RSS feed
- * A RSS feed may contain multiple feed messages
+ * Represents a single messages in a RSS feed A RSS feed may contain multiple
+ * feed messages
+ * 
  * @author Shiqing
  *
  */
 public class FeedMessage {
-	
+
 	String title;
-    String description;
-    String link;
-    String author;
-    String guid;
-    String newsText;
+	String description;
+	String link;
+	String author;
+	String guid;
+	String newsText;
+	TfidfFilter calculator = new TfidfFilter();
+	HashMap<String, Double> map;
 
-    /**
-     * get the title of this FeedMessage
-     * @return this FeedMessage's title
-     */
-    public String getTitle() {
-        return title;
-    }
+	public TfidfFilter getCalculator() {
+		return calculator;
+	}
 
-    /**
-     * change the title of this FeedMessage
-     * @param title this FeedMessage's new title
-     */
-    public void setTitle(String title) {
-        this.title = title;
-    }
+	public HashMap<String, Double> getMap() {
+		return map;
+	}
 
-    /**
-     * get the description of this FeedMessage
-     * @return this FeedMessage's new description
-     */
-    public String getDescription() {
-        return description;
-    }
+	FeedMessage(String t, String d, String l, String a, String g, DataBase db) {
+		title = t;
+		description = d;
+		link = l;
+		author = a;
+		guid = g;
+		map = calculator.calculateTfidf(db, this);
 
-    /**
-     * change the description of this FeedMessage
-     * @param description this FeedMessage's new description
-     */
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	}
 
-    /**
-     * get the link of this FeedMessage
-     * @return this FeedMessage's link
-     */
-    public String getLink() {
-        return link;
-    }
+	public int compareTo(FeedMessage fm, String keyWord) {
+		Double s1 = map.get(keyWord);
+		Double s2 = fm.map.get(keyWord);
+		if (s1 < s2)
+			return -1;
+		else if (s1 == s2)
+			return 0;
+		else 
+			return 1;
+	}
 
-    /**
-     * change the link of this FeedMessage
-     * @param link this FeedMessage's new link
-     */
-    public void setLink(String link) {
-        this.link = link;
-    }
+	/**
+	 * get the title of this FeedMessage
+	 * 
+	 * @return this FeedMessage's title
+	 */
+	public String getTitle() {
+		return title;
+	}
 
-    /**
-     * get the author of this FeedMessage
-     * @return this FeedMessage's author
-     */
-    public String getAuthor() {
-        return author;
-    }
+	/**
+	 * change the title of this FeedMessage
+	 * 
+	 * @param title
+	 *            this FeedMessage's new title
+	 */
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
-    
-    /**
-     * change the author of this FeedMessage
-     * @param author this FeedMessage's new author
-     */
-    public void setAuthor(String author) {
-        this.author = author;
-    }
+	/**
+	 * get the description of this FeedMessage
+	 * 
+	 * @return this FeedMessage's new description
+	 */
+	public String getDescription() {
+		return description;
+	}
 
-    /**
-     * get the link of this FeedMessage
-     * @return this FeedMessage's link
-     */
-    public String getGuid() {
-        return guid;
-    }
+	/**
+	 * change the description of this FeedMessage
+	 * 
+	 * @param description
+	 *            this FeedMessage's new description
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-    /**
-     * change the link of this FeedMessage
-     * @param guid this FeedMessage's new link
-     */
-    public void setGuid(String guid) {
-        this.guid = guid;
-    }
-    
-    
+	/**
+	 * get the link of this FeedMessage
+	 * 
+	 * @return this FeedMessage's link
+	 */
+	public String getLink() {
+		return link;
+	}
+
+	/**
+	 * change the link of this FeedMessage
+	 * 
+	 * @param link
+	 *            this FeedMessage's new link
+	 */
+	public void setLink(String link) {
+		this.link = link;
+	}
+
+	/**
+	 * get the author of this FeedMessage
+	 * 
+	 * @return this FeedMessage's author
+	 */
+	public String getAuthor() {
+		return author;
+	}
+
+	/**
+	 * change the author of this FeedMessage
+	 * 
+	 * @param author
+	 *            this FeedMessage's new author
+	 */
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	/**
+	 * get the link of this FeedMessage
+	 * 
+	 * @return this FeedMessage's link
+	 */
+	public String getGuid() {
+		return guid;
+	}
+
+	/**
+	 * change the link of this FeedMessage
+	 * 
+	 * @param guid
+	 *            this FeedMessage's new link
+	 */
+	public void setGuid(String guid) {
+		this.guid = guid;
+	}
+	
     /**
      * get the news content of this FeedMessage
      * @return this FeedMessage's news content
@@ -113,13 +160,12 @@ public class FeedMessage {
 	}
 
 	/**
-     * set the print format of this FeedMessage
-     */
-    @Override
-    public String toString() {
-        return "FeedMessage [title=" + title + ", description=" + description
-                + ", link=" + link + ", author=" + author + ", guid=" + guid
-                + "]";
-    }
+	 * set the print format of this FeedMessage
+	 */
+	@Override
+	public String toString() {
+		return "FeedMessage [title=" + title + ", description=" + description + ", link=" + link + ", author=" + author
+				+ ", guid=" + guid + "]";
+	}
 
 }
