@@ -18,7 +18,17 @@ public class FeedMessage {
 	String newsText;
 	TfidfFilter calculator = new TfidfFilter();
 	HashMap<String, Double> map;
-
+	
+	
+	public FeedMessage(){
+		title = null;
+		description = null;
+		link = null;
+		author = null;
+		guid = null;
+		newsText = null;
+	}
+	
 	public TfidfFilter getCalculator() {
 		return calculator;
 	}
@@ -27,11 +37,8 @@ public class FeedMessage {
 		return map;
 	}
 	
-	public FeedMessage() {
-		// TODO Auto-generated constructor stub
-	}
-
-	FeedMessage(String t, String d, String l, String a, String g, DataBase db) {
+	
+	public FeedMessage(String t, String d, String l, String a, String g, DataBase db) {
 		title = t;
 		description = d;
 		link = l;

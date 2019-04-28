@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -7,33 +8,37 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class TfidfFilter implements ITfidfFilter {
-	Set<String> stoppedList  = new HashSet<>();
-	Map<FeedMessage, PriorityQueue> map = new HashMap<>();
 	class info {
 		String keyword;
-		double score;
+		Double score;
+		info (String k, Double s) {
+			keyword = k;
+			score = s;
+		}
 	}
 
 	@Override
 	public HashMap<String, Double> calculateTfidf(DataBase db, FeedMessage msg) {
 		// TODO Auto-generated method stub
-		initStopList();
-		PriorityQueue<info> pq = new pq<>((a, b) -> b.score - a.score);
-		wordTfidf(pq, )
-		return null;
-	}
-	
-	public void initStopList() {
-		File input = new File("../stoppedlist");
-		Scanner sc = new Scanner(input);
-		try {
-			while (sc.hasNextLine());
-			String s = sc.nextLine().trim();
-			stoppedList.add(s);
-		} catch (FileNotFoundException e) {
-			throw new FileNotFoundException();
+		PriorityQueue<info> pq = new PriorityQueue<info>(10, (a, b) -> b.score.compareTo(a.score));
+		Map<String, Integer> wordCountMap = db.getFeedMessageMap().get(msg);
+		int total_doc = db.getDbSize();
+		int docSize = 0;
+		for (String s: wordCountMap.keySet()) {
+			docSize += wordCountMap.get(s);
 		}
-	}
-
-	
+		for (String s: wordCountMap.keySet()) {
+			double tf = (double) wordCountMap.get(s) / docSize;
+			double idf = Math.log((double) total_doc / db.getAllTermMap().get(s));
+			double score = tf * idf;
+			info temp = new info(s, score);
+			pq.offer(temp);
+		}
+		HashMap<String, Double> ret = new HashMap<>();
+		for (int i = 0; i < 10; i++ ) {
+			info temp = pq.poll();
+			ret.put(temp.keyword, temp.score);
+		}
+		return ret;
+	}	
 }
