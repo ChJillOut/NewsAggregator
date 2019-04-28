@@ -18,7 +18,14 @@ public class FeedMessage {
 	String newsText;
 	TfidfFilter calculator = new TfidfFilter();
 	HashMap<String, Double> map;
-
+	public FeedMessage(){
+		title = null;
+		description = null;
+		link = null;
+		author = null;
+		guid = null;
+		newsText = null;
+	}
 	public TfidfFilter getCalculator() {
 		return calculator;
 	}
