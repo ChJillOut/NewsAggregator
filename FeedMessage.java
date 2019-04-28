@@ -26,6 +26,10 @@ public class FeedMessage {
 	public HashMap<String, Double> getMap() {
 		return map;
 	}
+	
+	public FeedMessage() {
+		// TODO Auto-generated constructor stub
+	}
 
 	FeedMessage(String t, String d, String l, String a, String g, DataBase db) {
 		title = t;
