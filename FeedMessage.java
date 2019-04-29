@@ -27,6 +27,7 @@ public class FeedMessage {
 		author = null;
 		guid = null;
 		newsText = null;
+		map = new HashMap<>();
 	}
 	
 	public TfidfFilter getCalculator() {
@@ -38,14 +39,18 @@ public class FeedMessage {
 	}
 	
 	
-	public FeedMessage(String t, String d, String l, String a, String g, DataBase db) {
-		title = t;
-		description = d;
-		link = l;
-		author = a;
-		guid = g;
+//	public FeedMessage(String t, String d, String l, String a, String g, DataBase db) {
+//		title = t;
+//		description = d;
+//		link = l;
+//		author = a;
+//		guid = g;
+//		
+//
+//	}
+	public HashMap<String, Double> calculateTFIDFScore(DataBase db) {
 		map = calculator.calculateTfidf(db, this);
-
+		return map;
 	}
 
 	public int compareTo(FeedMessage fm, String keyWord) {

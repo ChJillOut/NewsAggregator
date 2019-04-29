@@ -14,7 +14,11 @@ class MaxHeap {
 	 * @param max maximum number of elements to hold.
 	 */
 	MaxHeap(FeedMessage[] h, int num, int max, String k) {
-		Heap = h;
+		Heap = new FeedMessage[max];
+		for(int i = 0; i < h.length; i++) {
+			insert(h[i]);
+//			Heap[i] = h[i];
+		}
 		n = num;
 		size = max;
 		keyWord = k;
@@ -91,6 +95,7 @@ class MaxHeap {
 			return;
 		}
 		int curr = n++;
+//		System.out.println();
 		Heap[curr] = key; // Start at end of heap
 		// Now sift up until curr's parent's key > curr's key
 		while ((curr != 0) && (Heap[curr].compareTo(Heap[parent(curr)], keyWord) > 0)) {

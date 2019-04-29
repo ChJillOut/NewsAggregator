@@ -16,7 +16,22 @@ public class Feed {
     final String pubDate;
 
     final List<FeedMessage> entries = new ArrayList<FeedMessage>();
-
+    /**
+     * Copy constructor, copying pary.
+     *
+     * @param f
+     */
+    public Feed(Feed f, int n) {
+    	this.title = f.title;
+        this.link = f.link;
+        this.description = f.description;
+        this.language = f.language;
+        this.copyright = f.copyright;
+        this.pubDate = f.pubDate;
+        for (int i = 0; i < n; i++) {
+        	this.entries.add(f.getMessages().get(i));
+        }
+    }
     /**
      * creates a new Feed with the given fields 
      * @param title
@@ -102,9 +117,5 @@ public class Feed {
                 + pubDate + ", title=" + title + "]";
     }
 
-	public HashMap<String, MaxHeap> getEntries() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 }
