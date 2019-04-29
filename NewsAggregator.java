@@ -35,7 +35,7 @@ public class NewsAggregator {
 		}
 		User user = new User(0);
 		
-		List<FeedMessage> list = user.search("Nasdaq", db);
+		List<FeedMessage> list = user.search("CHICAGO", db);
 		for (FeedMessage f : list) {
 			System.out.println(f.link);
 		}

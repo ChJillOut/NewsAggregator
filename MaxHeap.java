@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 
 // Max-heap implementation
 class MaxHeap {
@@ -7,23 +8,38 @@ class MaxHeap {
 	private int n; // Number of things now in heap
 	String keyWord;
 
-	/**
-	 * Constructor supporting preloading of heap contents
-	 * @param h heap array.
-	 * @param num number of elements.
-	 * @param max maximum number of elements to hold.
-	 */
-	MaxHeap(FeedMessage[] h, int num, int max, String k) {
-		Heap = new FeedMessage[max];
-		for(int i = 0; i < h.length; i++) {
-			insert(h[i]);
-//			Heap[i] = h[i];
-		}
-		n = num;
-		size = max;
-		keyWord = k;
-		buildHeap();
+	
+	MaxHeap(int capacity, String keyword) {
+		Heap = new FeedMessage[capacity];
+		size = capacity;
+		n = 0;
+		this.keyWord = keyword;
 	}
+	
+//	void preload(List<FeedMessage> feedMessages) {
+//		for (int i = 0; i < feedMessages.size(); i++) {
+//			insert(feedMessages.get(i));
+//		}
+//	}
+	
+//	/**
+//	 * Constructor supporting preloading of heap contents
+//	 * @param h heap array.
+//	 * @param num number of elements.
+//	 * @param max maximum number of elements to hold.
+//	 */
+//	MaxHeap(FeedMessage[] h, int num, int max, String k) {
+//		Heap = new FeedMessage[max];
+//		for(int i = 0; i < h.length; i++) {
+//			insert(h[i]);
+////			Heap[i] = h[i];
+//		}
+//		n = num;
+//		size = max;
+//		keyWord = k;
+//		buildHeap();
+//	}
+	
 	/**
 	 * Convert the heap to an ArrayList 
 	 * @return the converted list
@@ -94,9 +110,11 @@ class MaxHeap {
 			System.out.println("Heap is full");
 			return;
 		}
-		int curr = n++;
+		int curr = n;
+		Heap[curr] = key;
+		n++;
 //		System.out.println();
-		Heap[curr] = key; // Start at end of heap
+		 // Start at end of heap
 		// Now sift up until curr's parent's key > curr's key
 		while ((curr != 0) && (Heap[curr].compareTo(Heap[parent(curr)], keyWord) > 0)) {
 			swap(Heap, curr, parent(curr));

@@ -66,8 +66,8 @@ public class DataBase implements IDataBase {
 					heap = db.get(s);
 
 				} else {
-					FeedMessage[] h = { msg };
-					heap = new MaxHeap(h, h.length,MAX_HEAP_NUM, s);
+//					FeedMessage[] h = { msg };
+					heap = new MaxHeap(MAX_HEAP_NUM, s);
 				}
 				heap.insert(msg);
 				db.put(s, heap);
