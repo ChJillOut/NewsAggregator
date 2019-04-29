@@ -28,7 +28,7 @@ public class TfidfFilter implements ITfidfFilter {
 		for (String s: wordCountMap.keySet()) {
 			double tf = (double) wordCountMap.get(s) / docSize;
 			double idf = Math.log((double) total_doc / db.getAllTermMap().get(s));
-			double score = tf * idf;
+			Double score = tf * idf;
 			info temp = new info(s, score);
 			pq.offer(temp);
 		}
