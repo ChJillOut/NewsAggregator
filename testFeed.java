@@ -20,6 +20,8 @@ public class testFeed {
     @Test
     public void testToString() {        
         Feed feed = new Feed("a", "b", "c", "d", "e", "1");
-        assertEquals("Feed [copyright=e, description=c, language=d, link=b, pubDate=1, title=a");
+        assertEquals("Feed [copyright=" + feed.getCopyright() + ", description=" + feed.getDescription()
+                + ", language=" + feed.getLanguage() + ", link=" + feed.getLink() + ", pubDate="
+                + feed.getPubDate() + ", title=" + feed.getTitle() + "]", feed.toString());
     }
 }

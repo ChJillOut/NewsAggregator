@@ -7,7 +7,7 @@ public class testFeedMessage {
     @Test
     public void testFeedMessage() {
         FeedMessage message = new FeedMessage();
-        String tittle = "tittle";
+        String title = "tittle";
         String description = "description";
         String link = "link";
         String author = "author";
@@ -20,14 +20,14 @@ public class testFeedMessage {
         assertEquals(author, message.getAuthor());
         assertEquals(description, message.getDescription());
         assertEquals(guid, message.getGuid());
-        assertEquals(link, message.getGuid());
-        assertEquals(tittle, message.getAuthor());
+        assertEquals(link, message.getLink());
+        assertEquals(title, message.getTitle());
     }
 
     @Test
     public void testToString() {
         FeedMessage message = new FeedMessage();
-        String tittle = "tittle";
+        String title = "tittle";
         String description = "description";
         String link = "link";
         String author = "author";
