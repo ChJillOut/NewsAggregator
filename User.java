@@ -10,14 +10,14 @@ public class User implements IUser{
 	public List<FeedMessage> search(String keyWord, IDataBase db) {
 		// TODO Auto-generated method stub
 		if (keyWord == null) throw new NullPointerException();
-		return null;
+		return db.fetch(keyWord);
 	}
 
 	@Override
 	public String viewArticle(FeedMessage msg) {
 		// TODO Auto-generated method stub
 		if (msg == null) throw new NullPointerException();
-		return null;
+		return msg.getNewsText();
 	}
 
 }

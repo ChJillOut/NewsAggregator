@@ -18,7 +18,7 @@ public class NewsAggregator {
 		System.out.println("Result2");
 		
 		// new feed with smaller capacity
-		Feed newFeed = new Feed(feed, 3);
+		Feed newFeed = new Feed(feed, 20);
 		db.initStopList();
 		System.out.println("init stop list");
 		TfidfFilter filter = new TfidfFilter();
@@ -29,17 +29,22 @@ public class NewsAggregator {
 		int count = 0;
 		System.out.println("hmm");
 		System.out.println("Result3");
-		for (String s: tfidf_test.keySet()) {
-			count++;
-			System.out.println("Term " + s + " " + count + " " + tfidf_test.get(s));
-		}
+//		for (String s: tfidf_test.keySet()) {
+//			count++;
+//			System.out.println("Term " + s + " " + count + " " + tfidf_test.get(s));
+//		}
 		User user = new User(0);
 		
-		List<FeedMessage> list = user.search("CHICAGO", db);
-		for (FeedMessage f : list) {
-			System.out.println(f.link);
+		//testing user
+		System.out.println(db.getDb().keySet().toString());
+		for (String s : db.getWordMap().keySet()) {
+			System.out.println(s + ": "+ db.getWordMap().get(s).size());
 		}
-		System.out.println();
+//		List<FeedMessage> list = user.search("assassination", db);
+//		for (FeedMessage f : list) {
+//			System.out.println(f.link);
+//		}
+//		System.out.println();
 	}
 
 }
