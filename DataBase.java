@@ -58,60 +58,61 @@ public class DataBase implements IDataBase {
 		}
 		stoppedList.remove("the");
 	}
-	public void updateDataBase() {
-		for (FeedMessage msg: feedMessageMap.keySet()) {
-			msg.calculateTFIDFScore(this);
-		}
-		if(feedMessageMap == null) throw new IllegalArgumentException("Storing failed! FeedMessageMap is null!"); 
-		for (FeedMessage msg : feedMessageMap.keySet()) {
-			HashMap<String, Double> map = msg.getMap();
-//			System.out.println("__________________");
-//			System.out.println(map);
-//			System.out.println("__________________");
-//			System.out.println("__________________");
-//			System.out.println(wordMap);
-//			System.out.println("__________________");
-			for (String s : map.keySet()) {
-//				System.out.println(s);
-				if (wordMap.containsKey(s)) {
-					System.out.println("Already in the map");
-				}
-				Set<FeedMessage> temp = wordMap.getOrDefault(s, new HashSet<>());
-				temp.add(msg);
-				if (temp.size() > 1) {
-					System.out.println("This appears more than once" + s);
-				}
-				wordMap.put(s,  temp);
-			}
-		}
-//		for (String s: wordMap.keySet()) {
-//			System.out.println(s);
-//			System.out.println(wordMap.get(s).size());
-//		}
-	}
 //	public void updateDataBase() {
+//		for (FeedMessage msg: feedMessageMap.keySet()) {
+//			msg.calculateTFIDFScore(this);
+//		}
 //		if(feedMessageMap == null) throw new IllegalArgumentException("Storing failed! FeedMessageMap is null!"); 
 //		for (FeedMessage msg : feedMessageMap.keySet()) {
-//			msg.calculateTFIDFScore(this);
 //			HashMap<String, Double> map = msg.getMap();
+////			System.out.println("__________________");
+////			System.out.println(map);
+////			System.out.println("__________________");
+////			System.out.println("__________________");
+////			System.out.println(wordMap);
+////			System.out.println("__________________");
 //			for (String s : map.keySet()) {
-//				MaxHeap heap = null;
-//				if (stoppedList.contains(s) || s.length() <= 0) {
-//					continue;
+////				System.out.println(s);
+//				if (wordMap.containsKey(s)) {
+//					System.out.println("Already in the map");
 //				}
-//				if (db.keySet().contains(s)) {
-//					heap = db.get(s);
-//
-//				} else {
-////					FeedMessage[] h = { msg };
-//					heap = new MaxHeap(MAX_HEAP_NUM, s);
+//				Set<FeedMessage> temp = wordMap.getOrDefault(s, new HashSet<>());
+//				temp.add(msg);
+//				if (temp.size() > 1) {
+//					System.out.println("This appears more than once" + s);
 //				}
-//				heap.insert(msg);
-//				db.put(s, heap);
-//
+//				wordMap.put(s,  temp);
 //			}
 //		}
+////		for (String s: wordMap.keySet()) {
+////			System.out.println(s);
+////			System.out.println(wordMap.get(s).size());
+////		}
 //	}
+	public void updateDataBase() {
+		if(feedMessageMap == null) throw new IllegalArgumentException("Storing failed! FeedMessageMap is null!"); 
+		for (FeedMessage msg : feedMessageMap.keySet()) {
+			if(msg == null) continue;
+			msg.calculateTFIDFScore(this);
+			HashMap<String, Double> map = msg.getMap();
+			for (String s : map.keySet()) {
+				MaxHeap heap = null;
+				if (stoppedList.contains(s) || s.length() <= 0) {
+					continue;
+				}
+				if (db.keySet().contains(s)) {
+					heap = db.get(s);
+
+				} else {
+//					FeedMessage[] h = { msg };
+					heap = new MaxHeap(MAX_HEAP_NUM, s);
+				}
+				heap.insert(msg);
+				db.put(s, heap);
+
+			}
+		}
+	}
 
 	@Override
 	public List<FeedMessage> fetch(String keyWord) {

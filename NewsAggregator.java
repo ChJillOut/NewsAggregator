@@ -9,42 +9,50 @@ public class NewsAggregator {
 		// TODO Auto-generated method stub
 		RSSReader reader = new RSSReader();
 		Feed feed = reader.parseNewsText();
-		System.out.println("Result1");
+//		System.out.println("Result1");
 		List<FeedMessage> messagesList = feed.getMessages();
 		for (FeedMessage entry: messagesList) {
 			System.out.println(entry.getNewsText());
 		}
 		DataBase db = new DataBase();
-		System.out.println("Result2");
+//		System.out.println("Result2");
 		
 		// new feed with smaller capacity
-		Feed newFeed = new Feed(feed, 20);
+		Feed newFeed = new Feed(feed, 10);
 		db.initStopList();
-		System.out.println("init stop list");
+//		System.out.println("init stop list");
 		TfidfFilter filter = new TfidfFilter();
-		System.out.println("Started store");
+//		System.out.println("Started store");
 		db.store(newFeed);
 		FeedMessage testMessage = messagesList.get(1);
 		Map<String, Double> tfidf_test = filter.calculateTfidf(db, testMessage);
 		int count = 0;
-		System.out.println("hmm");
-		System.out.println("Result3");
-//		for (String s: tfidf_test.keySet()) {
-//			count++;
-//			System.out.println("Term " + s + " " + count + " " + tfidf_test.get(s));
+//		for (int i = 0; i < feed.getMessages().size();i++) {
+//			System.out.println(feed.getMessages().get(i).getMap());
 //		}
-		User user = new User(0);
+//		
+//		for (String s : db.getDb().keySet()) {
+//			System.out.println(s+ ": "+db.getDb().get(s).heapSize());
+//		}
 		
-		//testing user
-		System.out.println(db.getDb().keySet().toString());
-		for (String s : db.getWordMap().keySet()) {
-			System.out.println(s + ": "+ db.getWordMap().get(s).size());
+		//Testing the aggregator's search method.
+		User user = new User(0);
+		String key = "global";
+		System.out.println();
+		System.out.println();
+		List<FeedMessage> list = user.search(key, db);
+		System.out.println("Searching for word: "+ key);
+		for (FeedMessage f : list) {
+			
+			System.out.println("Link: "+ f.link);
+			System.out.println("Title: "+ f.getTitle());
+			System.out.println("Description:"+f.getDescription());
+			System.out.println();
 		}
-//		List<FeedMessage> list = user.search("assassination", db);
-//		for (FeedMessage f : list) {
-//			System.out.println(f.link);
-//		}
-//		System.out.println();
+		
+		// testing the view article function
+		FeedMessage read = list.get(3);
+		System.out.println(user.viewArticle(read));
 	}
 
 }
