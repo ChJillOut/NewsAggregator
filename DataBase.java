@@ -42,7 +42,7 @@ public class DataBase implements IDataBase {
 	}	
 	
 	public void initStopList() throws FileNotFoundException {
-		File input = new File("../stoppedlist");
+		File input = new File("stop-list.txt");
 		Scanner sc = new Scanner(input);
 		while (sc.hasNextLine());
 		String s = sc.nextLine().trim();

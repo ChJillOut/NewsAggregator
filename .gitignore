@@ -16,3 +16,6 @@
 /testUser.class
 /NewsAggregator.class
 /RSSReader.class
+/TfidfFilter$info.class
+/testTfidfFilter.class
+/TfidfFilterTest.class

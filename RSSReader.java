@@ -14,7 +14,7 @@ import org.jsoup.select.Elements;
  */
 public class RSSReader {
 	
-	public List<FeedMessage> parseNewsText() {
+	public Feed parseNewsText() {
 		
         RSSFeedParser parser = new RSSFeedParser("http://feeds.reuters.com/reuters/businessNews");
         Feed feed = parser.readFeed();
@@ -35,7 +35,7 @@ public class RSSReader {
 			}  
         	
         }
-        return feed.getMessages();
+        return feed;
         
     }
 }
