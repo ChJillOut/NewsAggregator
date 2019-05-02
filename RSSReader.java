@@ -20,7 +20,9 @@ public class RSSReader {
 	 */
 	public Feed parseNewsText() {
 		
-        RSSFeedParser parser = new RSSFeedParser("http://feeds.reuters.com/reuters/businessNews");
+	//	RSSFeedParser parser = new RSSFeedParser("http://feeds.reuters.com/reuters/businessNews");
+		
+     	RSSFeedParser parser = new RSSFeedParser("http://feeds.reuters.com/Reuters/domesticNews");
         Feed feed = parser.readFeed();
 //        System.out.println(feed);
         for (int i = 0; i < feed.getMessages().size(); i++) {

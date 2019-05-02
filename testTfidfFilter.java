@@ -5,33 +5,31 @@ import java.util.*;
 
 public class testTfidfFilter {
     @Test
-    public void testcalculateTfidf() {
-		RSSReader reader = new RSSReader();
-		Feed feed = reader.parseNewsText();
+    public void testcalculateTfidf() throws FileNotFoundException{
+        DataBase db = new DataBase();
+        db.initStopList();
+//        assertNull(db.fetch("Philly"));
+        Feed feed = new Feed("title", "link", "description", "language",
+                "copyright", "pubdate");
+        FeedMessage fm1 = new FeedMessage();
+        FeedMessage fm2 = new FeedMessage();
+        fm1.setAuthor("author1");
+        fm1.setDescription("description1");
+        fm1.setGuid("guid1");
+        fm1.setLink("link1");
+        fm1.setNewsText("contains word1 word2 word3 unique");
+        fm2.setTitle("tittle2");
+        fm2.setAuthor("author2");
+        fm2.setDescription("description2");
+        fm2.setGuid("guid2");
+        fm2.setLink("link2");
+        fm2.setNewsText("contains word1 word2 unique");
+        fm2.setTitle("tittle2");
+        feed.getMessages().add(fm1);
+        feed.getMessages().add(fm2);
+        db.store(feed);
         TfidfFilter filter = new TfidfFilter();
-
+        Map<String, Double> map = filter.calculateTfidf(db, fm1);
+        assertEquals(5, map.size());
     }
-
-    // 
-		// TODO Auto-generated method stub
-		// PriorityQueue<info> pq = new PriorityQueue<info>(10, (a, b) -> b.score.compareTo(a.score));
-		// Map<String, Integer> wordCountMap = db.getFeedMessageMap().get(msg);
-		// int total_doc = db.getDbSize();
-		// int docSize = 0;
-		// for (String s: wordCountMap.keySet()) {
-		// 	docSize += wordCountMap.get(s);
-		// }
-		// for (String s: wordCountMap.keySet()) {
-		// 	double tf = (double) wordCountMap.get(s) / docSize;
-		// 	double idf = Math.log((double) total_doc / db.getAllTermMap().get(s));
-		// 	Double score = tf * idf;
-		// 	info temp = new info(s, score);
-		// 	pq.offer(temp);
-		// }
-		// HashMap<String, Double> ret = new HashMap<>();
-		// for (int i = 0; i < 10; i++ ) {
-		// 	info temp = pq.poll();
-		// 	ret.put(temp.keyword, temp.score);
-		// }
-		// return ret;
 }
