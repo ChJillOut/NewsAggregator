@@ -94,9 +94,9 @@ public class RSSFeedParser {
                     case LANGUAGE:
                         language = getCharacterData(event, eventReader);
                         break;
-                    case AUTHOR:
-                        author = getCharacterData(event, eventReader);
-                        break;
+//                    case AUTHOR:
+//                        author = getCharacterData(event eventReader);
+//                        break;
                     case PUB_DATE:
                         pubdate = getCharacterData(event, eventReader);
                         break;
