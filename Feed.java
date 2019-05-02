@@ -5,7 +5,8 @@ import java.util.List;
 /**
  * Represents a single RSS feed 
  * @author Shiqing
- *
+ * @source https://www.vogella.com/tutorials/RSSFeed/article.html
+ * 
  */
 public class Feed {
 	final String title;
@@ -16,10 +17,11 @@ public class Feed {
     final String pubDate;
 
     final List<FeedMessage> entries = new ArrayList<FeedMessage>();
+    
     /**
-     * Copy constructor, copying pary.
+     * Copy constructor. Create another Feed object that has the same contents. 
      *
-     * @param f
+     * @param f Feed object that is copied from
      */
     public Feed(Feed f, int n) {
     	this.title = f.title;
@@ -32,6 +34,7 @@ public class Feed {
         	this.entries.add(f.getMessages().get(i));
         }
     }
+    
     /**
      * creates a new Feed with the given fields 
      * @param title

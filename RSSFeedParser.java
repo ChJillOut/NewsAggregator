@@ -12,7 +12,7 @@ import javax.xml.stream.events.XMLEvent;
 
 /**
  * Represents a parser that reads in and processes the contents of a RSS feed
- * @author Shiqing
+ * @source https://www.vogella.com/tutorials/RSSFeed/article.html
  *
  */
 public class RSSFeedParser {
