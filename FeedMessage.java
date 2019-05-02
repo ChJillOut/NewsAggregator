@@ -64,13 +64,9 @@ public class FeedMessage{
 	/**
 	 * compare the TFIDF score of a keyword in this FeedMessage with that of the same keyword in another FeedMessage
 	 * 
-=======
-	/**
-	 * Comparing message with fm on particular keyword.
 	 * @param fm
 	 * @param keyWord
 	 * @return -1 if message is smaller than fm; 0 if they are of the same rank; 1 otherwise.
->>>>>>> dd9edf28f82fd75342c1e8543c8b5578e46951e7
 	 */
 	public int compareTo(FeedMessage fm, String keyWord) {
 		Double s1 = map.get(keyWord);
