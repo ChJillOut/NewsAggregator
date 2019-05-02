@@ -8,7 +8,7 @@ import java.util.HashMap;
  * @author Shiqing
  *
  */
-public class FeedMessage {
+public class FeedMessage{
 
 	String title;
 	String description;
@@ -39,20 +39,17 @@ public class FeedMessage {
 	}
 	
 	
-//	public FeedMessage(String t, String d, String l, String a, String g, DataBase db) {
-//		title = t;
-//		description = d;
-//		link = l;
-//		author = a;
-//		guid = g;
-//		
-//
-//	}
+
 	public HashMap<String, Double> calculateTFIDFScore(DataBase db) {
 		map = calculator.calculateTfidf(db, this);
 		return map;
 	}
-
+	/**
+	 * Comparing message with fm on particular keyword.
+	 * @param fm
+	 * @param keyWord
+	 * @return -1 if message is smaller than fm; 0 if they are of the same rank; 1 otherwise.
+	 */
 	public int compareTo(FeedMessage fm, String keyWord) {
 		Double s1 = map.get(keyWord);
 		Double s2 = fm.map.get(keyWord);
@@ -183,5 +180,8 @@ public class FeedMessage {
 		return "FeedMessage [title=" + title + ", description=" + description + ", link=" + link + ", author=" + author
 				+ ", guid=" + guid + "]";
 	}
+
+	
+	
 
 }

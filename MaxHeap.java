@@ -6,9 +6,13 @@ class MaxHeap {
 	private FeedMessage[] Heap; // Pointer to the heap array
 	private int size; // Maximum size of the heap
 	private int n; // Number of things now in heap
-	String keyWord;
+	String keyWord; // The keyword associate with this heap.
 
-	
+	/**
+	 * Constructor for MaxHeap.
+	 * @param capacity
+	 * @param keyword
+	 */
 	MaxHeap(int capacity, String keyword) {
 		Heap = new FeedMessage[capacity];
 		size = capacity;
@@ -16,29 +20,6 @@ class MaxHeap {
 		this.keyWord = keyword;
 	}
 	
-//	void preload(List<FeedMessage> feedMessages) {
-//		for (int i = 0; i < feedMessages.size(); i++) {
-//			insert(feedMessages.get(i));
-//		}
-//	}
-	
-//	/**
-//	 * Constructor supporting preloading of heap contents
-//	 * @param h heap array.
-//	 * @param num number of elements.
-//	 * @param max maximum number of elements to hold.
-//	 */
-//	MaxHeap(FeedMessage[] h, int num, int max, String k) {
-//		Heap = new FeedMessage[max];
-//		for(int i = 0; i < h.length; i++) {
-//			insert(h[i]);
-////			Heap[i] = h[i];
-//		}
-//		n = num;
-//		size = max;
-//		keyWord = k;
-//		buildHeap();
-//	}
 	
 	/**
 	 * Convert the heap to an ArrayList 

@@ -1,6 +1,7 @@
 import java.util.HashMap;
 
 public interface ITfidfFilter {
+	
 	/**
 	 * With this method, we can calculate the TF-IDF value of a news, returning the 
 	 * top 10 relatively frequent words and their corresponding TF-IDF value.
