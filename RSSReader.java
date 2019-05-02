@@ -14,6 +14,10 @@ import org.jsoup.select.Elements;
  */
 public class RSSReader {
 	
+	/**
+	 * fetch full texts of each individual news articles and store the contents in its corresponding FeedMessage
+	 * @return a Feed that contains a collection of FeedMessages
+	 */
 	public Feed parseNewsText() {
 		
 	//	RSSFeedParser parser = new RSSFeedParser("http://feeds.reuters.com/reuters/businessNews");

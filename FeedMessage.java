@@ -6,6 +6,7 @@ import java.util.HashMap;
  * feed messages
  * 
  * @author Shiqing
+ * @source https://www.vogella.com/tutorials/RSSFeed/article.html
  *
  */
 public class FeedMessage{
@@ -20,6 +21,9 @@ public class FeedMessage{
 	HashMap<String, Double> map;
 	
 	
+	/**
+	 * Default constructor
+	 */
 	public FeedMessage(){
 		title = null;
 		description = null;
@@ -30,22 +34,36 @@ public class FeedMessage{
 		map = new HashMap<>();
 	}
 	
+	/**
+	 * get the TFIDF filter of this FeedMessage
+	 * @return this FeedMessage's TFIDF filter
+	 */
 	public TfidfFilter getCalculator() {
 		return calculator;
 	}
 
+	/**
+	 * get the TFIDF score map of this FeedMessage
+	 * @return this FeedMessage's TFIDF score map
+	 */
 	public HashMap<String, Double> getMap() {
 		return map;
 	}
-	
-	
 
+	/**
+	 * calculate TFIDF score of the news article in this FeedMessage
+	 * @param db TFIDF database 
+	 * @return a HashMap that maps each word to its score
+	 */
 	public HashMap<String, Double> calculateTFIDFScore(DataBase db) {
 		map = calculator.calculateTfidf(db, this);
 		return map;
 	}
+
+
 	/**
-	 * Comparing message with fm on particular keyword.
+	 * compare the TFIDF score of a keyword in this FeedMessage with that of the same keyword in another FeedMessage
+	 * 
 	 * @param fm
 	 * @param keyWord
 	 * @return -1 if message is smaller than fm; 0 if they are of the same rank; 1 otherwise.
