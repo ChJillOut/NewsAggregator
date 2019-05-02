@@ -33,7 +33,7 @@ public class testDataBase {
         test.add(fm1);
         test.add(fm2);
         List<FeedMessage> test2 = db.fetch("unique");
-        System.out.println(test2.toString());
+//        System.out.println(test2.toString());
 //        System.out.println(db.getDb().keySet().toString());
 //        System.out.println(db.getAllTermMap());
 //        System.out.println(db.getFeedMessageMap());
