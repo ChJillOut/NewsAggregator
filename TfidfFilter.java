@@ -68,15 +68,18 @@ public class TfidfFilter implements ITfidfFilter {
 		for (String s : wordCountMap.keySet()) {
 			if (s == null)
 				continue;
+//			System.out.println(s);
 			double tf = (double) wordCountMap.get(s) / docSize;
 			double idf = Math.log((double) total_doc / db.getAllTermMap().get(s));
 			Double score = tf * idf;
 			info temp = new info(s, score);
 			set.add(temp);
 		}
+//		System.out.println("set size"+set.size());
 		HashMap<String, Double> ret = new HashMap<>();
-		for (int i = 0; i < set.size(); i++) {
+		while(set.size() > 0) {
 			info temp = set.pollFirst();
+//			System.out.println(temp.keyword);
 			if (temp == null)
 				continue;
 			ret.put(temp.keyword, temp.score);

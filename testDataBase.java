@@ -31,8 +31,13 @@ public class testDataBase {
         db.store(feed);
         List<FeedMessage> test = new ArrayList<>();
         test.add(fm1);
+        test.add(fm2);
         List<FeedMessage> test2 = db.fetch("unique");
-        assertEquals(test.get(1), test2.get(1));
+        System.out.println(test2.toString());
+//        System.out.println(db.getDb().keySet().toString());
+//        System.out.println(db.getAllTermMap());
+//        System.out.println(db.getFeedMessageMap());
+        assertEquals(test.size(), test2.size());
         
     }
 

@@ -108,6 +108,7 @@ public class DataBase implements IDataBase {
 				continue;
 			msg.calculateTFIDFScore(this);
 			HashMap<String, Double> map = msg.getMap();
+//			System.out.println(map);
 			for (String s : map.keySet()) {
 				MaxHeap heap = null;
 				if (stoppedList.contains(s) || s.length() <= 0) {
@@ -171,6 +172,7 @@ public class DataBase implements IDataBase {
 						tempMap = new HashMap<>();
 					}
 					tempMap.put(s, tempMap.getOrDefault(s, 0) + 1);
+//					System.out.println("put "+s);
 					feedMessageMap.put(msg, tempMap);
 					allTermMap.put(s, allTermMap.getOrDefault(s, 0) + 1);
 				}
