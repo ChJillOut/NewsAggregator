@@ -1,20 +1,21 @@
-All teams should submit a README file explaining how to run your code. 
-You should include all the steps detailing which files to be run in what sequence (if any). 
-In case your code has any dependencies (third party libraries or a specific version of 
-something) mention it in your README. Make sure to include any specific instructions in 
-case you are using any API. 
+All teams should submit a README file explaining how to run your code.
+You should include all the steps detailing which files to be run in what sequence (if any).
+In case your code has any dependencies (third party libraries or a specific version of
+something) mention it in your README. Make sure to include any specific instructions in
+case you are using any API.
 
 Make sure anyone who gets the code should be able to run it after reading this file.
 
 If your team has already submitted the code, submit just this file separately.
 
 1. How to run this code
-	1) put stoplist.txt under outside the src folder of where you run the java project.
+	1) put stop-list.txt under outside the src folder of where you run the java project.
 	2) go to NewsAggregator and run the main method there.
 	3) this news aggregator is specially designed to parse news from Reuters:
 		http://feeds.reuters.com/Reuters/domesticNews
 		After parsing news from the web site, you will be able to view the keywords available for
-		search. Choose one that you are interested in and see the result returned. 
+		search.
+		Choose one that you are interested in and see the result returned.
 		Choose a result number to view the content of the news.
 2. Third party libraries
-	Jsoup
+	We used Jsoup external library for our project so please add Jsoup library to the build path and note that Jsoup jar file is put in the lib folder.
