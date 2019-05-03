@@ -26,7 +26,7 @@ public class NewsAggregator {
 		NewsAggregator na = new NewsAggregator();
 		//Testing the aggregator's search method.
 		User user = new User(0);
-//		String key = (String) na.db.getDb().keySet().toArray()[rand.nextInt(na.db.getDb().keySet().size())];
+//		
 		System.out.println();
 		System.out.println();
 		
@@ -51,7 +51,7 @@ public class NewsAggregator {
 		}
 		// Testing the view article function.
 		System.out.println("Choose one you'd like to view by inputing the result number: ");
-//		int r = rand.nextInt(list.size());
+//		
 		int r = 0;
 		do {
 			   r = sc.nextInt(); 

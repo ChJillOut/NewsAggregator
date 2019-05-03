@@ -30,6 +30,6 @@ public class testTfidfFilter {
         db.store(feed);
         TfidfFilter filter = new TfidfFilter();
         Map<String, Double> map = filter.calculateTfidf(db, fm1);
-        assertEquals(5, map.size());
+        assertEquals(2, map.size());
     }
 }
