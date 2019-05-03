@@ -62,6 +62,7 @@ public class NewsAggregator {
 		FeedMessage read = list.get(r);
 		System.out.println("User want to view result "+(r+1)+".");
 		System.out.println(user.viewArticle(read));
+		
 	}
 
 }
