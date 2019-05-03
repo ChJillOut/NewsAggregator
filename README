@@ -1,6 +1,6 @@
 
 1. How to run this code
-	0) Right click on the project (ctrl+enter) and select “Java Build Path” from the sidebar and then “Libraries” from the top bar. Finally, choose “Add External JARs…” and import the Jsoup JAR file. Please note that Jsoup jar file is placed in the lib folder.
+	0) Right click on the project (ctrl+enter) and select “Java Build Path” from the sidebar and then “Add External Archives...” and import the Jsoup JAR file. Please note that Jsoup jar file is placed in the lib folder.
 	1) place the stop-list.txt outside the src folder.
 	2) go to NewsAggregator and run the main method there.
 	3) this news aggregator is specially designed to parse news from Reuters:
