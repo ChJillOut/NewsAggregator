@@ -1,6 +1,6 @@
 
 1. How to run this code
-	1) put stop-list.txt under the java project directory but outside the src folder.
+	1) copy a stop-list.txt outside the NewsAggregator folder.
 	2) go to NewsAggregator and run the main method there.
 	3) this news aggregator is specially designed to parse news from Reuters:
 		http://feeds.reuters.com/Reuters/domesticNews
