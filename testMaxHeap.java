@@ -196,6 +196,55 @@ public class testMaxHeap {
     }
 
     @Test
+    public void testToList() {
+        int size = 10;
+        String test = "Philly";
+        MaxHeap heap = new MaxHeap(size, test);
+        FeedMessage fm1 = new FeedMessage();
+        FeedMessage fm2 = new FeedMessage();
+        FeedMessage fm3 = new FeedMessage();
+        String title = "tittle1";
+        String description = "description1";
+        String link = "link1";
+        String author = "author1";
+        String guid = "guid1";
+        fm1.setAuthor(author);
+        fm1.setDescription(description);
+        fm1.setGuid(guid);
+        fm1.setLink(link);
+        fm1.setTitle(title);
+        title = "tittle2";
+        description = "description2";
+        link = "link2";
+        author = "author2";
+        guid = "guid2";
+        fm2.setAuthor(author);
+        fm2.setDescription(description);
+        fm2.setGuid(guid);
+        fm2.setLink(link);
+        fm2.setTitle(title);
+        title = "tittle3";
+        description = "description3";
+        link = "link3";
+        author = "author3";
+        guid = "guid3";
+        fm3.setAuthor(author);
+        fm3.setDescription(description);
+        fm3.setGuid(guid);
+        fm3.setLink(link);
+        fm3.setTitle(title);
+        heap.insert(fm1);
+        heap.insert(fm2);
+        heap.insert(fm3);
+        List<FeedMessage> fmlist = new ArrayList();
+        fmlist.add(fm1);
+        fmlist.add(fm2);
+        fmlist.add(fm3);
+        List<FeedMessage> arr = heap.toList();
+        assertEquals(fmlist.size(), arr.size());
+    }
+
+    @Test
     public void testSwap() {
         int size = 10;
         String test = "Philly";
