@@ -22,6 +22,7 @@ public class testFeedMessage {
         assertEquals(guid, message.getGuid());
         assertEquals(link, message.getLink());
         assertEquals(title, message.getTitle());
+        message.getCalculator();
     }
 
     @Test

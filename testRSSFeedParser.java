@@ -14,8 +14,8 @@ public class testRSSFeedParser {
 		String title = feed.getTitle();
 		//assertEquals(fp.readFeed().toString(), feed.toString());
 		assertEquals(fp.readFeed().title, title);
-		System.out.println(fp.readFeed().toString());
-		System.out.println("///////////////////////////");
-		System.out.println(feed.toString());
+//		System.out.println(fp.readFeed().toString());
+//		System.out.println("///////////////////////////");
+//		System.out.println(feed.toString());
 	}
 }

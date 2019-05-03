@@ -9,6 +9,7 @@ public class testDataBase {
     public void testFetch() throws FileNotFoundException{
         DataBase db = new DataBase();
         db.initStopList();
+        db.getStoppedList();
 //        assertNull(db.fetch("Philly"));
         Feed feed = new Feed("title", "link", "description", "language",
                 "copyright", "pubdate");
@@ -37,6 +38,8 @@ public class testDataBase {
 //        System.out.println(db.getDb().keySet().toString());
 //        System.out.println(db.getAllTermMap());
 //        System.out.println(db.getFeedMessageMap());
+        db.getDb();
+        db.store(null);
         assertEquals(test.size(), test2.size());
         
     }
