@@ -9,4 +9,5 @@
 		Choose one that you are interested in and see the result returned.
 		Choose a result number to view the content of the news.
 2. Third party libraries
-	We used Jsoup external library for our project so please add Jsoup library to the build path and note that Jsoup jar file is put in the lib folder.
+	We used Jsoup external library for our project so please add Jsoup library to the build path and note that 
+	Jsoup jar file is put in the lib folder.
