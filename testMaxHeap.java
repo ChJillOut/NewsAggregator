@@ -1,146 +1,431 @@
-//import static org.junit.Assert.*;
-//import org.junit.*;
-//import java.io.*;
-//import java.util.*;
-//
-//public class testMaxHeap {
-//    @Test
-//    public void testHeapSize() {
-//        FeedMessage[] h = new FeedMessage[10];
-//        int n = 3;
-//        int size = 10;
-//        h[0] = new FeedMessage();
-//        h[1] = new FeedMessage();
-//        h[2] = new FeedMessage();
-//        MaxHeap heap = new MaxHeap(h, n, size);
-//        assertEquals(3, heap.heapSize());
-//    }
-//
-//    @Test
-//    public void testIsLeaf() {
-//        Comparable[] h = new Comparable[10];
-//        int n = 3;
-//        int size = 10;
-//        h[0] = 1;
-//        h[1] = 2;
-//        h[2] = 3;
-//        MaxHeap heap = new MaxHeap(h, n, size);
-//        assertTrue(heap.isLeaf(2));
-//    }
-//
-//    @Test
-//    public void testLeftChild() {
-//        Comparable[] h = new Comparable[10];
-//        int n = 3;
-//        int size = 10;
-//        h[0] = 1;
-//        h[1] = 2;
-//        h[2] = 3;
-//        MaxHeap heap = new MaxHeap(h, n, size);
-//        assertEquals(1, heap.leftChild(0));
-//    }
-//
-//    @Test
-//    public void testRightChild() {
-//        Comparable[] h = new Comparable[10];
-//        int n = 3;
-//        int size = 10;
-//        h[0] = 1;
-//        h[1] = 2;
-//        h[2] = 3;
-//        MaxHeap heap = new MaxHeap(h, n, size);
-//        assertEquals(2, heap.rightChild(0));
-//    }
-//
-//    @Test
-//    public void testParent() {
-//        Comparable[] h = new Comparable[10];
-//        int n = 3;
-//        int size = 10;
-//        h[0] = 1;
-//        h[1] = 2;
-//        h[2] = 3;
-//        MaxHeap heap = new MaxHeap(h, n, size);
-//        assertEquals(0, heap.parent(2));
-//    }
-//
-//    @Test
-//    public void testInsert() {
-//        Comparable[] h = new Comparable[10];
-//        int n = 3;
-//        int size = 5;
-//        h[0] = 1;
-//        h[1] = 2;
-//        h[2] = 3;
-//        MaxHeap heap = new MaxHeap(h, n, size);
-//        heap.insert(5);
-//        heap.insert(6);
-//        heap.insert(8);
-//    }
-//
-//    @Test
-//    public void testSwap() {
-//        Comparable[] h = new Comparable[10];
-//        int n = 3;
-//        int size = 5;
-//        h[0] = 1;
-//        h[1] = 2;
-//        h[2] = 3;
-//        MaxHeap heap = new MaxHeap(h, n, size);
-//        heap.swap(h, 0, 1);
-//    }
-//
-//    @Test
-//    public void testSiftDown() {
-//        Comparable[] h = new Comparable[10];
-//        int n = 3;
-//        int size = 5;
-//        h[0] = 1;
-//        h[1] = 2;
-//        h[2] = 3;
-//        MaxHeap heap = new MaxHeap(h, n, size);
-//        heap.siftDown(10);
-//        heap.siftDown(0);
-//    }
-//
-//    @Test
-//    public void testRemoveMax() {
-//        Comparable[] h = new Comparable[10];
-//        int n = 0;
-//        int size = 5;
-//        MaxHeap heap = new MaxHeap(h, n, size);
-//        assertEquals(-1, heap.removeMax());
-//        heap.insert(1);
-//        heap.insert(2);
-//        heap.insert(3);
-//        assertEquals(3, heap.removeMax());
-//    }
-//
-//    @Test
-//    public void testRemove() {
-//        Comparable[] h = new Comparable[10];
-//        int n = 3;
-//        int size = 5;
-//        h[0] = 1;
-//        h[1] = 2;
-//        h[2] = 3;
-//        MaxHeap heap = new MaxHeap(h, n, size);
-//        assertEquals(-1, heap.remove(6));
-//        assertEquals(1, heap.remove(2));
-//        assertEquals(3, heap.remove(0));
-//    }
-//
-//    @Test
-//    public void testModifyandUpdate() {
-//        Comparable[] h = new Comparable[10];
-//        int n = 3;
-//        int size = 5;
-//        h[0] = 1;
-//        h[1] = 2;
-//        h[2] = 3;
-//        MaxHeap heap = new MaxHeap(h, n, size);
-//        heap.swap(h, 0, 1);
-//        heap.modify(10, 1);
-//        heap.modify(0, 2);
-//    }
-//}
+import static org.junit.Assert.*;
+import org.junit.*;
+import java.io.*;
+import java.util.*;
+
+public class testMaxHeap {
+    @Test
+    public void testHeapSize() {
+        int size = 10;
+        String test = "Philly";
+        MaxHeap heap = new MaxHeap(size, test);
+        assertEquals(0, heap.heapSize());
+    }
+
+    @Test
+    public void testIsLeaf() {
+        int size = 3;
+        String test = "Philly";
+        MaxHeap heap = new MaxHeap(size, test);
+        FeedMessage fm1 = new FeedMessage();
+        FeedMessage fm2 = new FeedMessage();
+        FeedMessage fm3 = new FeedMessage();
+        String title = "tittle1";
+        String description = "description1";
+        String link = "link1";
+        String author = "author1";
+        String guid = "guid1";
+        fm1.setAuthor(author);
+        fm1.setDescription(description);
+        fm1.setGuid(guid);
+        fm1.setLink(link);
+        fm1.setTitle(title);
+        title = "tittle2";
+        description = "description2";
+        link = "link2";
+        author = "author2";
+        guid = "guid2";
+        fm2.setAuthor(author);
+        fm2.setDescription(description);
+        fm2.setGuid(guid);
+        fm2.setLink(link);
+        fm2.setTitle(title);
+        title = "tittle3";
+        description = "description3";
+        link = "link3";
+        author = "author3";
+        guid = "guid3";
+        fm3.setAuthor(author);
+        fm3.setDescription(description);
+        fm3.setGuid(guid);
+        fm3.setLink(link);
+        fm3.setTitle(title);
+        heap.insert(fm1);
+        heap.insert(fm2);
+        heap.insert(fm3);
+        FeedMessage fm4 = new FeedMessage();
+        FeedMessage fm5 = new FeedMessage();
+        heap.insert(fm4);
+        heap.insert(fm5);
+        assertTrue(heap.isLeaf(2));
+    }
+
+    @Test
+    public void testLeftChild() {
+        int size = 10;
+        String test = "Philly";
+        MaxHeap heap = new MaxHeap(size, test);
+        FeedMessage fm1 = new FeedMessage();
+        FeedMessage fm2 = new FeedMessage();
+        FeedMessage fm3 = new FeedMessage();
+        String title = "tittle1";
+        String description = "description1";
+        String link = "link1";
+        String author = "author1";
+        String guid = "guid1";
+        fm1.setAuthor(author);
+        fm1.setDescription(description);
+        fm1.setGuid(guid);
+        fm1.setLink(link);
+        fm1.setTitle(title);
+        title = "tittle2";
+        description = "description2";
+        link = "link2";
+        author = "author2";
+        guid = "guid2";
+        fm2.setAuthor(author);
+        fm2.setDescription(description);
+        fm2.setGuid(guid);
+        fm2.setLink(link);
+        fm2.setTitle(title);
+        title = "tittle3";
+        description = "description3";
+        link = "link3";
+        author = "author3";
+        guid = "guid3";
+        fm3.setAuthor(author);
+        fm3.setDescription(description);
+        fm3.setGuid(guid);
+        fm3.setLink(link);
+        fm3.setTitle(title);
+        heap.insert(fm1);
+        heap.insert(fm2);
+        heap.insert(fm3);
+        assertEquals(-1, heap.leftChild(5));
+        assertEquals(1, heap.leftChild(0));
+    }
+
+    @Test
+    public void testRightChild() {
+        int size = 10;
+        String test = "Philly";
+        MaxHeap heap = new MaxHeap(size, test);
+        FeedMessage fm1 = new FeedMessage();
+        FeedMessage fm2 = new FeedMessage();
+        FeedMessage fm3 = new FeedMessage();
+        String title = "tittle1";
+        String description = "description1";
+        String link = "link1";
+        String author = "author1";
+        String guid = "guid1";
+        fm1.setAuthor(author);
+        fm1.setDescription(description);
+        fm1.setGuid(guid);
+        fm1.setLink(link);
+        fm1.setTitle(title);
+        title = "tittle2";
+        description = "description2";
+        link = "link2";
+        author = "author2";
+        guid = "guid2";
+        fm2.setAuthor(author);
+        fm2.setDescription(description);
+        fm2.setGuid(guid);
+        fm2.setLink(link);
+        fm2.setTitle(title);
+        title = "tittle3";
+        description = "description3";
+        link = "link3";
+        author = "author3";
+        guid = "guid3";
+        fm3.setAuthor(author);
+        fm3.setDescription(description);
+        fm3.setGuid(guid);
+        fm3.setLink(link);
+        fm3.setTitle(title);
+        heap.insert(fm1);
+        heap.insert(fm2);
+        heap.insert(fm3);
+        assertEquals(-1, heap.rightChild(5));
+        assertEquals(2, heap.rightChild(0));
+    }
+
+    @Test
+    public void testParent() {
+        int size = 10;
+        String test = "Philly";
+        MaxHeap heap = new MaxHeap(size, test);
+        FeedMessage fm1 = new FeedMessage();
+        FeedMessage fm2 = new FeedMessage();
+        FeedMessage fm3 = new FeedMessage();
+        String title = "tittle1";
+        String description = "description1";
+        String link = "link1";
+        String author = "author1";
+        String guid = "guid1";
+        fm1.setAuthor(author);
+        fm1.setDescription(description);
+        fm1.setGuid(guid);
+        fm1.setLink(link);
+        fm1.setTitle(title);
+        title = "tittle2";
+        description = "description2";
+        link = "link2";
+        author = "author2";
+        guid = "guid2";
+        fm2.setAuthor(author);
+        fm2.setDescription(description);
+        fm2.setGuid(guid);
+        fm2.setLink(link);
+        fm2.setTitle(title);
+        title = "tittle3";
+        description = "description3";
+        link = "link3";
+        author = "author3";
+        guid = "guid3";
+        fm3.setAuthor(author);
+        fm3.setDescription(description);
+        fm3.setGuid(guid);
+        fm3.setLink(link);
+        fm3.setTitle(title);
+        heap.insert(fm1);
+        heap.insert(fm2);
+        heap.insert(fm3);
+        assertEquals(-1, heap.parent(0));
+        assertEquals(0, heap.parent(1));
+    }
+
+    @Test
+    public void testSwap() {
+        int size = 10;
+        String test = "Philly";
+        MaxHeap heap = new MaxHeap(size, test);
+        FeedMessage fm1 = new FeedMessage();
+        FeedMessage fm2 = new FeedMessage();
+        FeedMessage fm3 = new FeedMessage();
+        String title = "tittle1";
+        String description = "description1";
+        String link = "link1";
+        String author = "author1";
+        String guid = "guid1";
+        fm1.setAuthor(author);
+        fm1.setDescription(description);
+        fm1.setGuid(guid);
+        fm1.setLink(link);
+        fm1.setTitle(title);
+        title = "tittle2";
+        description = "description2";
+        link = "link2";
+        author = "author2";
+        guid = "guid2";
+        fm2.setAuthor(author);
+        fm2.setDescription(description);
+        fm2.setGuid(guid);
+        fm2.setLink(link);
+        fm2.setTitle(title);
+        title = "tittle3";
+        description = "description3";
+        link = "link3";
+        author = "author3";
+        guid = "guid3";
+        fm3.setAuthor(author);
+        fm3.setDescription(description);
+        fm3.setGuid(guid);
+        fm3.setLink(link);
+        fm3.setTitle(title);
+        heap.insert(fm1);
+        heap.insert(fm2);
+        heap.insert(fm3);
+        FeedMessage[] arr = new FeedMessage[3];
+        arr[0] = fm1;
+        arr[1] = fm2;
+        arr[2] = fm3;
+        heap.swap(arr, 0, 1);
+    }
+
+    @Test
+    public void testSiftDown() {
+        int size = 10;
+        String test = "Philly";
+        MaxHeap heap = new MaxHeap(size, test);
+        FeedMessage fm1 = new FeedMessage();
+        FeedMessage fm2 = new FeedMessage();
+        FeedMessage fm3 = new FeedMessage();
+        String title = "tittle1";
+        String description = "description1";
+        String link = "link1";
+        String author = "author1";
+        String guid = "guid1";
+        fm1.setAuthor(author);
+        fm1.setDescription(description);
+        fm1.setGuid(guid);
+        fm1.setLink(link);
+        fm1.setTitle(title);
+        title = "tittle2";
+        description = "description2";
+        link = "link2";
+        author = "author2";
+        guid = "guid2";
+        fm2.setAuthor(author);
+        fm2.setDescription(description);
+        fm2.setGuid(guid);
+        fm2.setLink(link);
+        fm2.setTitle(title);
+        title = "tittle3";
+        description = "description3";
+        link = "link3";
+        author = "author3";
+        guid = "guid3";
+        fm3.setAuthor(author);
+        fm3.setDescription(description);
+        fm3.setGuid(guid);
+        fm3.setLink(link);
+        fm3.setTitle(title);
+        heap.insert(fm1);
+        heap.insert(fm2);
+        heap.insert(fm3);
+        heap.buildHeap();
+        heap.siftDown(-1);
+    }
+
+    @Test
+    public void testRemoveMax() {
+        int size = 10;
+        String test = "Philly";
+        MaxHeap heap = new MaxHeap(size, test);
+        FeedMessage fm1 = new FeedMessage();
+        FeedMessage fm2 = new FeedMessage();
+        FeedMessage fm3 = new FeedMessage();
+        String title = "tittle1";
+        String description = "description1";
+        String link = "link1";
+        String author = "author1";
+        String guid = "guid1";
+        fm1.setAuthor(author);
+        fm1.setDescription(description);
+        fm1.setGuid(guid);
+        fm1.setLink(link);
+        fm1.setTitle(title);
+        title = "tittle2";
+        description = "description2";
+        link = "link2";
+        author = "author2";
+        guid = "guid2";
+        fm2.setAuthor(author);
+        fm2.setDescription(description);
+        fm2.setGuid(guid);
+        fm2.setLink(link);
+        fm2.setTitle(title);
+        title = "tittle3";
+        description = "description3";
+        link = "link3";
+        author = "author3";
+        guid = "guid3";
+        fm3.setAuthor(author);
+        fm3.setDescription(description);
+        fm3.setGuid(guid);
+        fm3.setLink(link);
+        fm3.setTitle(title);
+        heap.insert(fm1);
+        heap.insert(fm2);
+        heap.insert(fm3);
+        FeedMessage testfm = heap.removeMax();
+        heap.insert(testfm);
+        assertEquals(testfm, heap.removeMax());
+        heap.removeMax();
+        heap.removeMax();
+        heap.removeMax();
+    }
+
+    @Test
+    public void testRemove() {
+        int size = 10;
+        String test = "Philly";
+        MaxHeap heap = new MaxHeap(size, test);
+        FeedMessage fm1 = new FeedMessage();
+        FeedMessage fm2 = new FeedMessage();
+        FeedMessage fm3 = new FeedMessage();
+        String title = "tittle1";
+        String description = "description1";
+        String link = "link1";
+        String author = "author1";
+        String guid = "guid1";
+        fm1.setAuthor(author);
+        fm1.setDescription(description);
+        fm1.setGuid(guid);
+        fm1.setLink(link);
+        fm1.setTitle(title);
+        title = "tittle2";
+        description = "description2";
+        link = "link2";
+        author = "author2";
+        guid = "guid2";
+        fm2.setAuthor(author);
+        fm2.setDescription(description);
+        fm2.setGuid(guid);
+        fm2.setLink(link);
+        fm2.setTitle(title);
+        title = "tittle3";
+        description = "description3";
+        link = "link3";
+        author = "author3";
+        guid = "guid3";
+        fm3.setAuthor(author);
+        fm3.setDescription(description);
+        fm3.setGuid(guid);
+        fm3.setLink(link);
+        fm3.setTitle(title);
+        heap.insert(fm1);
+        heap.insert(fm2);
+        heap.insert(fm3);
+        assertNull(heap.remove(-1));
+        FeedMessage testfm = heap.remove(0);
+        heap.insert(testfm);
+        assertEquals(testfm, heap.remove(0));
+    }
+
+    @Test
+    public void testModifyandUpdate() {
+        int size = 10;
+        String test = "Philly";
+        MaxHeap heap = new MaxHeap(size, test);
+        FeedMessage fm1 = new FeedMessage();
+        FeedMessage fm2 = new FeedMessage();
+        FeedMessage fm3 = new FeedMessage();
+        String title = "tittle1";
+        String description = "description1";
+        String link = "link1";
+        String author = "author1";
+        String guid = "guid1";
+        fm1.setAuthor(author);
+        fm1.setDescription(description);
+        fm1.setGuid(guid);
+        fm1.setLink(link);
+        fm1.setTitle(title);
+        title = "tittle2";
+        description = "description2";
+        link = "link2";
+        author = "author2";
+        guid = "guid2";
+        fm2.setAuthor(author);
+        fm2.setDescription(description);
+        fm2.setGuid(guid);
+        fm2.setLink(link);
+        fm2.setTitle(title);
+        title = "tittle3";
+        description = "description3";
+        link = "link3";
+        author = "author3";
+        guid = "guid3";
+        fm3.setAuthor(author);
+        fm3.setDescription(description);
+        fm3.setGuid(guid);
+        fm3.setLink(link);
+        fm3.setTitle(title);
+        heap.insert(fm1);
+        heap.insert(fm2);
+        heap.insert(fm3);
+        FeedMessage newfm = new FeedMessage();
+        heap.modify(0, newfm);
+    }
+}
